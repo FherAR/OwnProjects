@@ -1,0 +1,88 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Parámetros del problema
+    const int TOTAL_POSTULANTES = 1000; 
+    const int VACANTES = 150;
+    const double NOTA_MINIMA = 120.0;
+    
+    // Variables estadísticas
+    int ingresantesTotales = 0;
+    double sumaNotas = 0;
+    double sumaNotasCuadrado = 0;
+    
+    // Inicializamos max muy bajo y min muy alto para que sean reemplazados
+    double notaMaxIngresante = -999; 
+    double notaMinIngresante = 999;
+    
+    cout << "--- SISTEMA DE ADMISIÓN ---" << endl;
+    
+    for (int i = 1; i <= TOTAL_POSTULANTES; i++) {
+        cout << "\nPostulante #" << i << endl;
+        
+        int rmCorr, rmInc, cCorr, cInc, lCorr, lInc;
+        
+        // LECTURA DE DATOS
+        cout << "Razonamiento (40 preg) - Correctas: "; cin >> rmCorr;
+        cout << "Razonamiento (40 preg) - Incorrectas: "; cin >> rmInc;
+        
+        cout << "Ciencias (30 preg) - Correctas: "; cin >> cCorr;
+        cout << "Ciencias (30 preg) - Incorrectas: "; cin >> cInc;
+        
+        cout << "Letras (30 preg) - Correctas: "; cin >> lCorr;
+        cout << "Letras (30 preg) - Incorrectas: "; cin >> lInc;
+        
+        // a) CÁLCULO DE LA NOTA FINAL
+        double notaRM = (rmCorr * 2.0) - (rmInc * 1.0);
+        double notaCiencias = (cCorr * 3.0) - (cInc * 1.5);
+        double notaLetras = (lCorr * 1.0) - (lInc * 0.5);
+        
+        double notaFinal = notaRM + notaCiencias + notaLetras;
+        cout << "Nota Final obtenida: " << notaFinal << endl;
+        
+        // Acumuladores para media y varianza de TODOS los postulantes
+        sumaNotas = sumaNotas + notaFinal;
+        sumaNotasCuadrado = sumaNotasCuadrado + (notaFinal * notaFinal);
+        
+        // DETERMINAR INGRESO
+        if (notaFinal >= NOTA_MINIMA && ingresantesTotales < VACANTES) {
+            cout << "ESTADO: ¡INGRESO!" << endl;
+            ingresantesTotales++;
+            
+            // d) Actualizar Nota Máxima y Mínima solo de los INGRESANTES
+            if (notaFinal > notaMaxIngresante) {
+                notaMaxIngresante = notaFinal;
+            }
+            if (notaFinal < notaMinIngresante) {
+                notaMinIngresante = notaFinal;
+            }
+        } else {
+            cout << "ESTADO: NO INGRESO" << endl;
+        }
+    }
+    
+    // b) MEDIA ARITMÉTICA
+    double media = sumaNotas / TOTAL_POSTULANTES;
+    
+    // c) VARIANZA (Fórmula: Promedio de los cuadrados - Cuadrado del promedio)
+    double varianza = (sumaNotasCuadrado / TOTAL_POSTULANTES) - (media * media);
+    
+    // REPORTE FINAL
+    cout << "\n==================================" << endl;
+    cout << "       REPORTE ESTADÍSTICO        " << endl;
+    cout << "==================================" << endl;
+    cout << "Media aritmética global: " << media << endl;
+    cout << "Varianza global: " << varianza << endl;
+    cout << "Total de vacantes cubiertas: " << ingresantesTotales << " de " << VACANTES << endl;
+    
+    if (ingresantesTotales > 0) {
+        cout << "Nota máxima de un ingresante: " << notaMaxIngresante << endl;
+        cout << "Nota mínima de un ingresante: " << notaMinIngresante << endl;
+    } else {
+        cout << "Ningún postulante alcanzó la nota mínima requerida." << endl;
+    }
+    
+    return 0;
+}

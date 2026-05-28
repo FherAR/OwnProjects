@@ -1,0 +1,23 @@
+#include <iostream>
+#include <iomanip> // Para dar formato a los decimales (setprecision y fixed)
+#include <cmath>   // Para la función sqrt()
+
+using namespace std;
+
+int main() {
+    cout << "    N   |   N^2   |  N^0.5" << endl;
+    cout << "----------------------------" << endl;
+    
+    // Usamos un pequeño margen en la condición (1.1001) por la precisión de los decimales
+    for (double n = 1.0; n <= 1.1001; n = n + 0.001) {
+        double cuadrado = n * n;
+        double raiz = sqrt(n);
+        
+        // Imprimimos dando el formato de cantidad de decimales
+        cout << fixed << setprecision(3) << n << " | " 
+             << setprecision(5) << cuadrado << " | " 
+             << raiz << endl;
+    }
+    
+    return 0;
+}

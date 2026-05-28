@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    long long numero; // Usamos long long porque el long de Java es de 64 bits
+    cout << "Ingrese un número entero para multiplicar por 11: ";
+    cin >> numero;
+    
+    long long resultado = 0;
+    long long multiplicador = 1; // Para ubicar unidades, decenas, centenas...
+    
+    int digitoAnterior = 0;
+    int acarreo = 0;
+    
+    // El bucle sigue mientras haya número, quede un dígito anterior por procesar o exista un acarreo
+    while (numero > 0 || digitoAnterior > 0 || acarreo > 0) {
+        // 1. Extraer el último dígito del número
+        int digitoActual = numero % 10;
+        
+        // 2. Sumar según la regla del matemático
+        int suma = digitoActual + digitoAnterior + acarreo;
+        
+        // 3. Determinar qué se queda y qué se lleva
+        int nuevoDigito = suma % 10;
+        acarreo = suma / 10;
+        
+        // 4. Armar el resultado final ubicando el dígito en su posición
+        resultado = resultado + (nuevoDigito * multiplicador);
+        
+        // 5. Preparar las variables para el siguiente ciclo
+        multiplicador = multiplicador * 10;
+        digitoAnterior = digitoActual;
+        numero = numero / 10; // Quitamos el último dígito ya procesado
+    }
+    
+    cout << "El resultado aplicando el algoritmo es: " << resultado << endl;
+    
+    return 0;
+}

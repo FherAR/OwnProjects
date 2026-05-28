@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int filas;
+    cout << "Ingrese la cantidad de filas para el Triángulo de Floyd: ";
+    cin >> filas;
+    
+    int contadorNumeros = 1;
+    
+    // Bucle externo: Controla las filas
+    for (int i = 1; i <= filas; i++) {
+        
+        // Bucle interno: Controla las columnas (imprime 'i' cantidad de números)
+        for (int j = 1; j <= i; j++) {
+            cout << contadorNumeros << " ";
+            contadorNumeros++; // Aumentamos el número para el siguiente ciclo
+        }
+        
+        // Al terminar la fila, damos un salto de línea
+        cout << endl;
+    }
+    
+    return 0;
+}

@@ -1,0 +1,34 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de términos de Fibonacci que desea ver: ";
+    cin >> n;
+    
+    int f1 = 1;
+    int f2 = 1;
+    
+    if (n <= 0) {
+        cout << "Por favor ingrese un número mayor a 0." << endl;
+    } else if (n == 1) {
+        cout << f1 << endl;
+    } else {
+        // Imprimimos los dos primeros términos
+        cout << f1 << " " << f2 << " ";
+        
+        // Empezamos el bucle desde el tercer término
+        for (int i = 3; i <= n; i++) {
+            int siguiente = f1 + f2;
+            cout << siguiente << " ";
+            
+            // Actualizamos los valores para la siguiente vuelta del bucle
+            f1 = f2;
+            f2 = siguiente;
+        }
+        cout << endl;
+    }
+    
+    return 0;
+}

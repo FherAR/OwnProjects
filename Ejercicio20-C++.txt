@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la posición (n) del número triangular que desea: ";
+    cin >> n;
+    
+    int sumaTriangular = 0;
+    
+    // Sumamos todos los números desde 1 hasta n
+    for (int i = 1; i <= n; i++) {
+        sumaTriangular = sumaTriangular + i;
+    }
+    
+    cout << "El número triangular en la posición " << n << " es: " << sumaTriangular << endl;
+    
+    return 0;
+}

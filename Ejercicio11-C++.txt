@@ -1,0 +1,49 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int totalEncuestados;
+    cout << "Ingrese la cantidad total de encuestados: ";
+    cin >> totalEncuestados;
+    
+    // Contadores
+    int aceptaA = 0, aceptaB = 0;
+    int ambos = 0, soloA = 0, soloB = 0, ninguno = 0;
+    
+    for (int i = 1; i <= totalEncuestados; i++) {
+        int respA, respB;
+        cout << "Encuestado #" << i << endl;
+        cout << "¿Acepta el producto A? (1=Sí, 0=No): ";
+        cin >> respA;
+        cout << "¿Acepta el producto B? (1=Sí, 0=No): ";
+        cin >> respB;
+        
+        // Lógica de clasificación
+        if (respA == 1 && respB == 1) {
+            ambos++;
+            aceptaA++;
+            aceptaB++;
+        } else if (respA == 1 && respB == 0) {
+            soloA++;
+            aceptaA++;
+        } else if (respA == 0 && respB == 1) {
+            soloB++;
+            aceptaB++;
+        } else {
+            ninguno++;
+        }
+    }
+    
+    // Mostrar resultados
+    cout << "\n--- RESULTADOS ---" << endl;
+    cout << "Total de encuestados: " << totalEncuestados << endl;
+    cout << "% que acepta Producto A: " << (aceptaA * 100.0 / totalEncuestados) << "%" << endl;
+    cout << "% que acepta Producto B: " << (aceptaB * 100.0 / totalEncuestados) << "%" << endl;
+    cout << "% que acepta AMBOS: " << (ambos * 100.0 / totalEncuestados) << "%" << endl;
+    cout << "% que acepta SOLO A: " << (soloA * 100.0 / totalEncuestados) << "%" << endl;
+    cout << "% que acepta SOLO B: " << (soloB * 100.0 / totalEncuestados) << "%" << endl;
+    cout << "% que acepta NINGUNO: " << (ninguno * 100.0 / totalEncuestados) << "%" << endl;
+    
+    return 0;
+}

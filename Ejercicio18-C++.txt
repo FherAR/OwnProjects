@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath> // Para la función sqrt()
+
+using namespace std;
+
+int main() {
+    int p;
+    cout << "Ingrese la cantidad de números (P) que desea procesar: ";
+    cin >> p;
+    
+    cout << "Número | Cuadrado | Cubo | Raíz Cuadrada" << endl;
+    cout << "----------------------------------------" << endl;
+    
+    for (int i = 1; i <= p; i++) {
+        int cuadrado = i * i;
+        int cubo = i * i * i;
+        double raiz = sqrt(i); // Calculamos la raíz
+        
+        // Imprimimos los resultados de esta línea
+        cout << i << "      | " << cuadrado << "       | " << cubo << "   | " << raiz << endl;
+    }
+    
+    return 0;
+}

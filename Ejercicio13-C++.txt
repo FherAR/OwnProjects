@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int suma = 0;
+    // Usamos double porque el producto será un número astronómico
+    double producto = 1; 
+    
+    for (int i = 20; i <= 400; i++) {
+        if (i % 2 == 0) { // Comprueba si es par
+            suma = suma + i;
+            producto = producto * i;
+        }
+    }
+    
+    cout << "La suma de los números pares (20-400) es: " << suma << endl;
+    cout << "El producto de los números pares (20-400) es: " << producto << endl;
+    
+    return 0;
+}

@@ -1,0 +1,48 @@
+#include <iostream>
+#include <climits> // Para INT_MAX
+
+using namespace std;
+
+int main() {
+    int numero;
+    int mayor = 0;
+    // Inicializamos el menor con el valor máximo posible en C++
+    int menor = INT_MAX; 
+    int suma = 0;
+    int contador = 0;
+    
+    cout << "Ingrese números positivos (Ingrese 0 para terminar):" << endl;
+    cin >> numero;
+    
+    while (numero != 0) {
+        if (numero > 0) {
+            // Actualizar mayor y menor
+            if (numero > mayor) {
+                mayor = numero;
+            }
+            if (numero < menor) {
+                menor = numero;
+            }
+            
+            suma = suma + numero;
+            contador++;
+        } else {
+            cout << "Por favor, ingrese solo números positivos." << endl;
+        }
+        
+        // Leer el siguiente número antes de que vuelva a evaluar el while
+        cin >> numero;
+    }
+    
+    if (contador > 0) {
+        double promedio = (double) suma / contador;
+        cout << "\n--- RESULTADOS ---" << endl;
+        cout << "El número mayor es: " << mayor << endl;
+        cout << "El número menor es: " << menor << endl;
+        cout << "El promedio es: " << promedio << endl;
+    } else {
+        cout << "No se ingresaron números válidos." << endl;
+    }
+    
+    return 0;
+}

@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int numero;
+    cout << "Ingrese un número natural positivo: ";
+    cin >> numero;
+    
+    int sumaDivisores = 0;
+    
+    // Buscamos los divisores desde el 1 hasta la mitad del número
+    for (int i = 1; i <= numero / 2; i++) {
+        if (numero % i == 0) { // Si el residuo es 0, es divisor exacto
+            sumaDivisores = sumaDivisores + i;
+        }
+    }
+    
+    if (sumaDivisores == numero && numero != 0) {
+        cout << "¡Sí! El número " << numero << " es un número PERFECTO." << endl;
+    } else {
+        cout << "No, el número " << numero << " NO es un número perfecto." << endl;
+    }
+    
+    return 0;
+}

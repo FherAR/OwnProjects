@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    int numero;
+    cout << "Ingrese un número del 1 al 20: ";
+    cin >> numero;
+    
+    string romano = "";
+    
+    switch (numero) {
+        case 1: romano = "I"; break;
+        case 2: romano = "II"; break;
+        case 3: romano = "III"; break;
+        case 4: romano = "IV"; break;
+        case 5: romano = "V"; break;
+        case 6: romano = "VI"; break;
+        case 7: romano = "VII"; break;
+        case 8: romano = "VIII"; break;
+        case 9: romano = "IX"; break;
+        case 10: romano = "X"; break;
+        case 11: romano = "XI"; break;
+        case 12: romano = "XII"; break;
+        case 13: romano = "XIII"; break;
+        case 14: romano = "XIV"; break;
+        case 15: romano = "XV"; break;
+        case 16: romano = "XVI"; break;
+        case 17: romano = "XVII"; break;
+        case 18: romano = "XVIII"; break;
+        case 19: romano = "XIX"; break;
+        case 20: romano = "XX"; break;
+        default: romano = "Número fuera de rango."; break;
+    }
+    
+    cout << "El número " << numero << " en romanos es: " << romano << endl;
+    
+    return 0;
+}

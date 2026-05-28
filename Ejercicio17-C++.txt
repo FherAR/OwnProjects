@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    // Constantes indicadas en el problema
+    const int NUM_EMPLEADOS = 50; 
+    const double FACTOR_EXTRA = 1.5;
+    
+    cout << "--- SISTEMA DE PAGO DE PLANILLA ---" << endl;
+    
+    for (int contador = 1; contador <= NUM_EMPLEADOS; contador++) {
+        double ptas_hora;
+        int horas_trabajadas;
+        
+        cout << "\nEmpleado #" << contador << endl;
+        cout << "Ingrese el pago por hora ordinaria (ptas_hora): ";
+        cin >> ptas_hora;
+        cout << "Ingrese las horas trabajadas: ";
+        cin >> horas_trabajadas;
+        
+        double salario = 0; // Inicializamos el salario en 0
+        
+        if (horas_trabajadas <= 40) {
+            // Sin horas extras
+            salario = horas_trabajadas * ptas_hora;
+        } else {
+            // Con horas extras
+            int horas_normales = 40;
+            int horas_extras = horas_trabajadas - 40;
+            
+            double pago_normal = horas_normales * ptas_hora;
+            double pago_extra = horas_extras * (ptas_hora * FACTOR_EXTRA);
+            
+            salario = pago_normal + pago_extra;
+        }
+        
+        cout << "El salario del Empleado #" << contador << " es: " << salario << endl;
+    }
+    
+    return 0;
+}

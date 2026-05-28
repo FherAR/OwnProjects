@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int cantidad;
+    cout << "Ingrese la cantidad de dinero en euros: ";
+    cin >> cantidad;
+    
+    // Calculamos los billetes de 20
+    int billetes20 = cantidad / 20;
+    int resto = cantidad % 20; // Lo que sobra
+    
+    // Calculamos los billetes de 10 con el resto anterior
+    int billetes10 = resto / 10;
+    resto = resto % 10;
+    
+    // Calculamos los billetes de 5
+    int billetes5 = resto / 5;
+    resto = resto % 5;
+    
+    // Lo que sobra al final son las monedas/billetes de 1
+    int billetes1 = resto;
+    
+    cout << "\n--- DESGLOSE ÓPTIMO ---" << endl;
+    cout << "Billetes de 20: " << billetes20 << endl;
+    cout << "Billetes de 10: " << billetes10 << endl;
+    cout << "Billetes de 5: " << billetes5 << endl;
+    cout << "Billetes de 1: " << billetes1 << endl;
+    
+    return 0;
+}

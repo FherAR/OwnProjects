@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <algorithm> // Para usar la función transform
+
+using namespace std;
+
+int main() {
+    int n_presos;
+    cout << "Número de presos: ";
+    cin >> n_presos;
+    
+    // Uso de contadores simples
+    int cantA = 0, cantB = 0, cantC = 0;
+    
+    for (int i = 1; i <= n_presos; i++) {
+        int m_pistas;
+        cout << "¿Cuántas pistas tiene el preso " << i << "?: ";
+        cin >> m_pistas;
+        int puntos_total = 0;
+        
+        for (int j = 1; j <= m_pistas; j++) {
+            string tipo;
+            cout << "Tipo de pista (A, B, C): ";
+            cin >> tipo;
+            
+            // Convertimos la entrada a mayúsculas para replicar toUpperCase()
+            transform(tipo.begin(), tipo.end(), tipo.begin(), ::toupper);
+            
+            if (tipo == "A") {
+                puntos_total += 20;
+                cantA++;
+            } else if (tipo == "B") {
+                puntos_total += 15;
+                cantB++;
+            } else if (tipo == "C") {
+                puntos_total += 30;
+                cantC++;
+            }
+        }
+        
+        string estatus;
+        if (puntos_total > 85) {
+            estatus = "Culpable";
+        } else if (puntos_total > 65) {
+            estatus = "Sospechoso de alto riesgo";
+        } else {
+            estatus = "Sospechoso de bajo riesgo";
+        }
+        
+        cout << "Preso " << i << " - Estatus: " << estatus << endl;
+    }
+    
+    int total_pistas = cantA + cantB + cantC;
+    string mas_frecuente = "A";
+    
+    if (cantB >= cantA && cantB >= cantC) {
+        mas_frecuente = "B";
+    }
+    if (cantC >= cantA && cantC >= cantB) {
+        mas_frecuente = "C";
+    }
+    
+    cout << "\nTipo de pista más frecuente: " << mas_frecuente << endl;
+    
+    if (total_pistas > 0) {
+        cout << fixed << setprecision(2);
+        cout << "Porcentaje A: " << (cantA * 100.0) / total_pistas << "%" << endl;
+        cout << "Porcentaje B: " << (cantB * 100.0) / total_pistas << "%" << endl;
+        cout << "Porcentaje C: " << (cantC * 100.0) / total_pistas << "%" << endl;
+    }
+    
+    return 0;
+}
